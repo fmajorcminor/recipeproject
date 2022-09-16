@@ -1,0 +1,22 @@
+version: "3.8"
+services:
+
+  #  app-client:
+  #    build:
+  #
+
+#  app_server:
+#    build: .
+#    restart: always
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - recipe-db
+  recipe-db:
+    image: "mysql:latest"
+    restart: always
+    environment:
+      #      MYSQL:DATABASE: 'recipe-db'
+      MYSQL_ROOT_PASSWORD: 'mypass'
+    ports:
+      - "3305:3306"
