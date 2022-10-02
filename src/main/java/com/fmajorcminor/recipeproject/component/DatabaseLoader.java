@@ -1,6 +1,5 @@
 package com.fmajorcminor.recipeproject.component;
 
-import com.fmajorcminor.recipeproject.model.Recipe;
 import com.fmajorcminor.recipeproject.repository.RecipeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

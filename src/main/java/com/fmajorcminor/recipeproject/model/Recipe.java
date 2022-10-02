@@ -1,29 +1,47 @@
 package com.fmajorcminor.recipeproject.model;
 
-import javax.persistence.*;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-@Entity
+import javax.persistence.*;
+import java.util.List;
+
+import static javax.persistence.CascadeType.ALL;
+
+@Entity(name = "recipe")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) //helps with more deserialization issues - not sure what
 public class Recipe {
-    @Id
+
+
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
+    @Id
+    private Long recipe_id;
 
     private String title;
     private String culture;
     private String link;
     private String temperature;
     private String mealType;
+    private Boolean favorite;
 
-    public Recipe(String title, String culture, String link, String temperature, String mealType) {
-        this.title = title;
-        this.culture = culture;
-        this.link = link;
-        this.temperature = temperature;
-        this.mealType = mealType;
+    @ManyToOne
+    @JoinColumn(name = "starting_week_date")
+    private WeeklyPlanner weeklyPlanner;
+
+
+    public WeeklyPlanner getWeeklyPlanner() {
+        return weeklyPlanner;
     }
 
-    public Recipe() {
+    public void setWeeklyPlanner(WeeklyPlanner weeklyPlanner) {
+        this.weeklyPlanner = weeklyPlanner;
+    }
 
+    public Boolean getFavorite() {
+        return favorite;
+    }
+
+    public void setFavorite(Boolean favorite) {
+        this.favorite = favorite;
     }
 
     public String getLink() {
@@ -66,11 +84,11 @@ public class Recipe {
         this.culture = culture;
     }
 
-    public Integer getId() {
-        return id;
+    public Long getRecipe_id() {
+        return recipe_id;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setRecipe_id(Long id) {
+        this.recipe_id = id;
     }
 }

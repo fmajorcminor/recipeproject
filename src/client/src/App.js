@@ -45,6 +45,13 @@ class MyComponent extends React.Component {
     } else {
       return (
         <ul>
+          <form>
+            <label>
+              Name:
+              <input type="text" name="name" />
+            </label>
+            <input type="submit" value="Submit" />
+          </form>
           {recipes.map((recipe) => (
             <li key={recipe.id}>
               {recipe.title} {recipe.culture} {recipe.temperature}
