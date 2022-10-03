@@ -80,4 +80,17 @@ public class Recipe {
     public void setRecipe_id(Long id) {
         this.recipe_id = id;
     }
+
+    @Override
+    public String toString() {
+        return "Recipe{" +
+                "recipe_id=" + recipe_id +
+                ", title='" + title + '\'' +
+                ", culture='" + culture + '\'' +
+                ", link='" + link + '\'' +
+                ", temperature='" + temperature + '\'' +
+                ", mealType='" + mealType + '\'' +
+                ", favorite=" + favorite +
+                '}';
+    }
 }

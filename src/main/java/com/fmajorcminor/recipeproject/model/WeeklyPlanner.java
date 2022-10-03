@@ -1,5 +1,6 @@
 package com.fmajorcminor.recipeproject.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import org.hibernate.annotations.FilterJoinTable;
 
@@ -10,6 +11,7 @@ import java.util.List;
 import java.util.Set;
 
 @Entity(name = "weekly_planner")
+@JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) //helps with more deserialization issues - not sure what
 public class WeeklyPlanner {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -67,5 +69,16 @@ public class WeeklyPlanner {
 
     public void setRecipeList(Set<Recipe> recipeList) {
         this.recipeList = recipeList;
+    }
+
+    @Override
+    public String toString() {
+        return "WeeklyPlanner{" +
+                "week_id=" + week_id +
+                ", starting_week_date=" + starting_week_date +
+                ", week_is_planned=" + week_is_planned +
+                ", ingredientList=" + ingredientList +
+                ", recipeList=" + recipeList +
+                '}';
     }
 }
