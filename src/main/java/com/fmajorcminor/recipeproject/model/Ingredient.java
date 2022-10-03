@@ -6,22 +6,22 @@ import javax.persistence.*;
 public class Ingredient {
 
     @Id
+    @Column(name = "ingredient_id", unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long ingredient_id;
+
     private String ingredient_name;
 
     private Boolean running_out;
     private Boolean completely_out;
     private String common_vegan_substitute;
 
-    @ManyToOne
-    @JoinColumn(name = "starting_week_date")
-    private WeeklyPlanner weeklyPlanner;
-
-    public WeeklyPlanner getWeeklyPlanner() {
-        return weeklyPlanner;
+    public Long getIngredient_id() {
+        return ingredient_id;
     }
 
-    public void setWeeklyPlanner(WeeklyPlanner weeklyPlanner) {
-        this.weeklyPlanner = weeklyPlanner;
+    public void setIngredient_id(Long ingredient_id) {
+        this.ingredient_id = ingredient_id;
     }
 
     public String getIngredient_name() {

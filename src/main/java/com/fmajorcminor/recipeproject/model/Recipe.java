@@ -1,5 +1,6 @@
 package com.fmajorcminor.recipeproject.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
@@ -12,8 +13,9 @@ import static javax.persistence.CascadeType.ALL;
 public class Recipe {
 
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @Column(name = "recipe_id", unique = true)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long recipe_id;
 
     private String title;
@@ -22,19 +24,6 @@ public class Recipe {
     private String temperature;
     private String mealType;
     private Boolean favorite;
-
-    @ManyToOne
-    @JoinColumn(name = "starting_week_date")
-    private WeeklyPlanner weeklyPlanner;
-
-
-    public WeeklyPlanner getWeeklyPlanner() {
-        return weeklyPlanner;
-    }
-
-    public void setWeeklyPlanner(WeeklyPlanner weeklyPlanner) {
-        this.weeklyPlanner = weeklyPlanner;
-    }
 
     public Boolean getFavorite() {
         return favorite;

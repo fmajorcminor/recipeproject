@@ -12,7 +12,8 @@ CREATE TABLE recipe (
 
 DROP TABLE IF EXISTS ingredient;
 CREATE TABLE ingredient (
-                            ingredient_name VARCHAR(30) PRIMARY KEY,
+                            ingredient_id SERIAL PRIMARY KEY,
+                            ingredient_name VARCHAR(30),
                             running_out BOOLEAN,
                             completely_out BOOLEAN,
                             common_vegan_substitute VARCHAR(30)
@@ -21,7 +22,8 @@ CREATE TABLE ingredient (
 
 DROP TABLE IF EXISTS weekly_planner;
 CREATE TABLE weekly_planner (
-                        starting_week_date DATE PRIMARY KEY,
+                        week_id SERIAL PRIMARY KEY,
+                        starting_week_date DATE UNIQUE,
                         week_is_planned BOOLEAN
 
 );

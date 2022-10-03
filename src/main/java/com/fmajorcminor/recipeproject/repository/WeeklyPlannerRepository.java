@@ -5,4 +5,5 @@ import org.hibernate.cfg.JPAIndexHolder;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface WeeklyPlannerRepository extends JpaRepository<WeeklyPlanner, Long> {
+
 }

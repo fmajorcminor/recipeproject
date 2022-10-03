@@ -17,7 +17,6 @@ public class RecipeController {
 
     private final static Logger logger = Logger.getLogger(RecipeController.class.getName());
 
-
     @Autowired
     private RecipeRepository recipeRepository;
 
