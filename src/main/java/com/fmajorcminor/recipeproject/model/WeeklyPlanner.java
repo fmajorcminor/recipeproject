@@ -30,7 +30,7 @@ public class WeeklyPlanner {
     @JoinTable(inverseJoinColumns = @JoinColumn(name = "recipe_id"))//, referencedColumnName = "starting_week_date")
     private Set<Recipe> recipeList;
 
-    @JsonManagedReference(value = "ingredientList") // this prevents infinite recursion
+//    @JsonManagedReference(value = "ingredientList") // this prevents infinite recursion
     public Set<Ingredient> getIngredientList() {
         return ingredientList;
     }

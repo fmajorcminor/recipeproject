@@ -11,4 +11,7 @@ public interface IWeeklyPlannerService {
     List<WeeklyPlanner> getAllWeeks();
     Set<Recipe> getRecipeForWeek(Long weekId);
     WeeklyPlanner getWeeklyPlanner(Long weekId);
+    String deleteWeek(Long weekId);
+    WeeklyPlanner saveWeeklyPlanner(WeeklyPlanner weeklyPlanner);
+    WeeklyPlanner update(Long id, WeeklyPlanner weeklyPlanner);
 }

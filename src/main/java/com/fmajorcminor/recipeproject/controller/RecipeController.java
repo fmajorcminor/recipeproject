@@ -42,7 +42,6 @@ public class RecipeController {
     public String delete(@PathVariable Long id) {
         recipeRepository.deleteById(id);
         return String.format("Recipe with id of %s is successfully deleted", id);
-//        return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
     @PutMapping(value = "{id}")

@@ -45,11 +45,25 @@ public class WeeklyPlannerController {
         return weeklyPlannerService.getRecipeForWeek(weekId);
     }
 
-    @PutMapping("{weekId}/recipes/{recipeId}")
-    @ResponseStatus(HttpStatus.ACCEPTED)
-    public String addRecipe(@PathVariable("weekId") Long weekId, @PathVariable("recipeId") Long recipeId) {
-        return weeklyPlannerService.saveRecipe(weekId, recipeId);
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
+    public WeeklyPlanner create(@RequestBody final WeeklyPlanner weeklyPlanner) {
+        return weeklyPlannerService.saveWeeklyPlanner(weeklyPlanner);
+    }
 
+    @PutMapping("{weekId}")
+    public WeeklyPlanner update(@PathVariable("weekId") Long weekId, @RequestBody WeeklyPlanner weeklyPlanner) {
+        return weeklyPlannerService.update(weekId, weeklyPlanner);
+    }
+
+    @PutMapping("{weekId}/recipes/{recipeId}")
+    public String addRecipeToWeek(@PathVariable("weekId") Long weekId, @PathVariable("recipeId") Long recipeId) {
+        return weeklyPlannerService.saveRecipe(weekId, recipeId);
+    }
+
+    @DeleteMapping("{weekId}")
+    public String deleteWeek(@PathVariable("weekId") Long weekId) {
+        return weeklyPlannerService.deleteWeek(weekId);
     }
 
 }
