@@ -27,7 +27,7 @@ public class WeeklyPlannerService implements IWeeklyPlannerService{
     private RecipeRepository recipeRepository;
 
     @Override
-    public String saveRecipe(Long weekId, Long recipeId) {
+    public String saveRecipeForPlanner(Long weekId, Long recipeId) {
         Recipe recipe = recipeRepository.getReferenceById(recipeId);
         WeeklyPlanner weeklyPlanner = weeklyPlannerRepository.getReferenceById(weekId);
 

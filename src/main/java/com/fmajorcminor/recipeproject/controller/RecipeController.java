@@ -2,6 +2,7 @@ package com.fmajorcminor.recipeproject.controller;
 
 import com.fmajorcminor.recipeproject.model.Recipe;
 import com.fmajorcminor.recipeproject.repository.RecipeRepository;
+import com.fmajorcminor.recipeproject.service.RecipeService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -20,35 +21,39 @@ public class RecipeController {
     @Autowired
     private RecipeRepository recipeRepository;
 
+    @Autowired
+    private RecipeService recipeService;
+
     @GetMapping
     public List<Recipe> getAllRecipes() {
         logger.log(Level.INFO, "Get all recipes API called");
-        return recipeRepository.findAll();
+        return recipeService.getAllRecipes();
     }
 
     @GetMapping
     @RequestMapping("{id}")
     public Recipe get(@PathVariable Long id) {
-        return recipeRepository.getReferenceById(id);
+        logger.log(Level.INFO, "Get one recipe API called");
+        return recipeService.getOneRecipe(id);
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
     public Recipe create(@RequestBody final Recipe recipe) {
-        return recipeRepository.saveAndFlush(recipe);
+        logger.log(Level.INFO, "Add recipe API called");
+        return recipeService.addRecipe(recipe);
     }
 
     @DeleteMapping(value = "{id}")
     public String delete(@PathVariable Long id) {
-        recipeRepository.deleteById(id);
-        return String.format("Recipe with id of %s is successfully deleted", id);
+        logger.log(Level.INFO, "Delete recipe API called");
+        return recipeService.deleteRecipe(id);
     }
 
     @PutMapping(value = "{id}")
     public Recipe update(@PathVariable Long id, @RequestBody Recipe recipe) {
-        Recipe existingRecipe = recipeRepository.getReferenceById(id);
-        BeanUtils.copyProperties(recipe, existingRecipe, "recipe_id");
-        return recipeRepository.saveAndFlush(existingRecipe);
+        logger.log(Level.INFO, "Update recipe API called");
+        return recipeService.updateRecipe(id, recipe);
     }
 
 

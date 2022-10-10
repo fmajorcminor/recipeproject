@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Set;
 
 public interface IWeeklyPlannerService {
-    String saveRecipe(Long weekId, Long recipeId);
+    String saveRecipeForPlanner(Long weekId, Long recipeId);
     List<WeeklyPlanner> getAllWeeks();
     Set<Recipe> getRecipeForWeek(Long weekId);
     WeeklyPlanner getWeeklyPlanner(Long weekId);
