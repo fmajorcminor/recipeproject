@@ -13,6 +13,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 @RequestMapping(path="/api/recipes")
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 public class RecipeController {
 

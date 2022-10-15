@@ -2,6 +2,7 @@ package com.fmajorcminor.recipeproject.model;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
@@ -18,8 +19,10 @@ public class Recipe {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long recipe_id;
 
+    @NotNull
     private String title;
     private String culture;
+    @NotNull
     private String link;
     private String temperature;
     private String mealType;
